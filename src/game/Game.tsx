@@ -1,32 +1,26 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef, useState } from "react";
-import { Mesh } from "three";
+import { Canvas, useThree } from "@react-three/fiber";
+import { Box } from "./Box";
+import { Lights } from "./Lights";
+import { OrbitControls } from "@react-three/drei";
+import { Board } from "./Board";
 
 type GameProps = {
   className?: string;
 };
 
+const CammeraHelper = () => {
+  const camera = useThree((state) => state.camera);
+  return <primitive object={camera} />;
+};
+
 export const Game = ({ className }: GameProps) => {
-  const [active, setActive] = useState(false);
-  const ref = useRef<Mesh>(null);
-  const handleClick = () => {
-    setActive(!active);
-  };
-
-  useFrame(() => {
-    if (ref.current) {
-      ref.current.rotation.x += 0.01;
-      ref.current.rotation.y += 0.01;
-    }
-  });
-
   return (
-    <Canvas className={className}>
-      <mesh onClick={handleClick} ref={ref}>
-        <boxBufferGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={active ? "hotpink" : "green"} />
-      </mesh>
-      <ambientLight />
+    <Canvas className={className} camera={{ position: [0, 0, 10] }}>
+      <OrbitControls />
+      <Board size={[16, 12]} />
+      <Box />
+      <Lights boardSize={[16, 12]} />
+      <CammeraHelper />
     </Canvas>
   );
 };
