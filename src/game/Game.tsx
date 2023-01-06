@@ -1,4 +1,4 @@
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import { Mesh } from "three";
 
@@ -12,6 +12,13 @@ export const Game = ({ className }: GameProps) => {
   const handleClick = () => {
     setActive(!active);
   };
+
+  useFrame(() => {
+    if (ref.current) {
+      ref.current.rotation.x += 0.01;
+      ref.current.rotation.y += 0.01;
+    }
+  });
 
   return (
     <Canvas className={className}>
