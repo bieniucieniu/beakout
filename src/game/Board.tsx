@@ -13,10 +13,10 @@ export const Board = ({ size, position, bricks }: BoardProps) => {
       <mesh position={position}>
         <planeGeometry args={size} />
         <meshStandardMaterial color="hotpink" />
+        {bricks?.map((brick) => (
+          <Brick key={brick.position.join()} {...brick} />
+        ))}
       </mesh>
-      {bricks?.map((brick) => (
-        <Brick key={brick.position.join()} {...brick} />
-      ))}
     </>
   );
 };
