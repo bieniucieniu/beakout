@@ -24,7 +24,7 @@ export const Game = ({ className }: GameProps) => {
         Math.floor(i / GRID_WIDTH) * (BOARD_HEIGHT / GRID_HEIGHT / 2) +
           BOARD_HEIGHT / GRID_HEIGHT / 2 -
           1,
-        0,
+        1,
       ],
       size: [2, 1, 1],
       color: "red",
