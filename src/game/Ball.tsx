@@ -15,7 +15,19 @@ export const Ball = ({ boardSize, bricks }: BallProps) => {
   useFrame(() => {
     ref.current!.position.x += velocityVec[0];
     ref.current!.position.y += velocityVec[1];
-    console.log(ref.current!.position.x, ref.current!.position.y);
+    if (
+      ref.current!.position.x > boardSize[0] / 2 ||
+      ref.current!.position.x < -boardSize[0] / 2
+    ) {
+      setVelocityVec([velocityVec[0] * -1, velocityVec[1]]);
+    }
+
+    if (
+      ref.current!.position.y > boardSize[1] / 2 ||
+      ref.current!.position.y < -boardSize[1] / 2
+    ) {
+      setVelocityVec([velocityVec[0], velocityVec[1] * -1]);
+    }
   });
 
   return (
