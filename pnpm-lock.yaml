@@ -19,7 +19,6 @@ specifiers:
 dependencies:
   '@react-three/drei': 9.48.2_cuekctkttqjec6nzdci24egcwe
   '@react-three/fiber': 8.9.1_4tzez3c2xpzuefjrvhpyy55bva
-  '@types/three': 0.147.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   three: 0.148.0
@@ -27,6 +26,7 @@ dependencies:
 devDependencies:
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.10
+  '@types/three': 0.147.1
   '@vitejs/plugin-react': 3.0.0_vite@4.0.3
   autoprefixer: 10.4.13_postcss@8.4.20
   postcss: 8.4.20
@@ -715,11 +715,11 @@ packages:
     resolution: {integrity: sha512-1dGYrF9E7frAXu3CRUYtTFj97PlA/Q0OedDQBROn3fKjtKXNhXc6/VNgkGod3axJMeNPNFDa6ur9eOcQ+aD0zw==}
     dependencies:
       '@types/webxr': 0.5.0
-    dev: false
+    dev: true
 
   /@types/webxr/0.5.0:
     resolution: {integrity: sha512-IUMDPSXnYIbEO2IereEFcgcqfDREOgmbGqtrMpVPpACTU6pltYLwHgVkrnYv0XhWEcjio9sYEfIEzgn3c7nDqA==}
-    dev: false
+    dev: true
 
   /@use-gesture/core/10.2.23:
     resolution: {integrity: sha512-Ynap/Uh6RX1Vgn3zNmFTyKapapdf7Av+GzAe6h+RsBZaxMF1z3cK6aohHPJP6T1hLrPyH/yehxa7RBqyESG9RA==}
