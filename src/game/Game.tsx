@@ -28,6 +28,7 @@ export const Game = ({ className }: GameProps) => {
       ],
       size: [2, 1, 1],
       color: "red",
+      points: 1,
     }))
   );
   return (
@@ -37,8 +38,8 @@ export const Game = ({ className }: GameProps) => {
         size={[BOARD_WIDTH, BOARD_HEIGHT]}
         position={[0, 0, -1]}
         bricks={bricks}
+        setBricks={setBricks}
       />
-      <Ball boardSize={[BOARD_WIDTH, BOARD_HEIGHT]} bricks={bricks} />
       <Lights boardSize={[32, 24]} />
     </Canvas>
   );

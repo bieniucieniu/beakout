@@ -2,6 +2,7 @@ export type BrickProps = {
   position: [number, number, number];
   size: [number, number, number];
   color: string;
+  points: number;
 };
 
 export const Brick = ({ position, color, size }: BrickProps) => {
