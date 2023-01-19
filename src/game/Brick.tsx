@@ -1,15 +1,34 @@
-export type BrickProps = {
-  position: [number, number, number];
-  size: [number, number, number];
-  color: string;
-  points: number;
-};
+import { useBox } from "@react-three/p2";
+import type { BrickProps } from "../types";
 
-export const Brick = ({ position, color, size }: BrickProps) => {
+export const Brick = ({
+  position,
+  color,
+  size,
+  name,
+  material,
+}: BrickProps) => {
+  const [ref, api] = useBox(() => ({
+    mass: 0,
+    position: [position[0], position[1]],
+    args: size,
+    material,
+    collisionResponse: true,
+    onCollideBegin: (e) => {
+      if (e.body.name === "ball") {
+        ref.current!.removeFromParent();
+        api.collisionResponse.set(false);
+      }
+    },
+  }));
+
   return (
-    <mesh position={position}>
-      <boxGeometry args={size ?? [1, 2, 1]} />
-      <meshStandardMaterial color={color} />
-    </mesh>
+    <>
+      {/* @ts-ignore */}
+      <mesh ref={ref} name={name}>
+        <boxGeometry args={[...size, 1]} />
+        <meshStandardMaterial color={color} />
+      </mesh>
+    </>
   );
 };
