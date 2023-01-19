@@ -29,10 +29,8 @@ export type BoxProps = {
 };
 
 export type BallProps = {
-  boardSize: [number, number];
-  bricks: BrickProps[];
-  setBricks: (bricks: BrickProps[]) => void;
-  material?: p2.MaterialOptions;
+  material: p2.MaterialOptions;
+  name: string;
 };
 
 export type LightsProps = {
@@ -54,5 +52,10 @@ export type PadProps = {
   position: [number, number];
   size: [number, number];
   color: string;
+  material?: p2.MaterialOptions;
+};
+
+export type BricksGridProps = {
+  bricksRef: React.MutableRefObject<BrickProps[]>;
   material?: p2.MaterialOptions;
 };
