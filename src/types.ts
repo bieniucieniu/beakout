@@ -57,5 +57,5 @@ export type PadProps = {
 
 export type BricksGridProps = {
   bricksRef: React.MutableRefObject<BrickProps[]>;
-  material?: p2.MaterialOptions;
+  material: p2.MaterialOptions;
 };
