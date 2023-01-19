@@ -1,6 +1,6 @@
 import { useCircle } from "@react-three/p2";
-import { useEffect, useRef, useState } from "react";
-import { BrickProps, BallProps } from "../types";
+import { useRef } from "react";
+import { BallProps } from "../types";
 
 export const Ball = ({ material, name }: BallProps) => {
   const velocityVec = useRef<[number, number]>([1, 1]);

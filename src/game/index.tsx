@@ -6,8 +6,6 @@ import type { GameProps } from "../types";
 import { Physics } from "@react-three/p2";
 const BOARD_WIDTH = 32;
 const BOARD_HEIGHT = 24;
-const GRID_WIDTH = 12;
-const GRID_HEIGHT = 6;
 
 export default ({ className }: GameProps) => {
   return (

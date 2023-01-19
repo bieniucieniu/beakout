@@ -1,9 +1,8 @@
-import { Brick } from "./Brick";
 import { Ball } from "./Ball";
 import type { BrickProps, BoardProps } from "../types";
-import { Physics, useContactMaterial } from "@react-three/p2";
+import { useContactMaterial } from "@react-three/p2";
 import { Border } from "./Border";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Pad } from "./Pad";
 import { BricksGrid } from "./BricksGrid";
 

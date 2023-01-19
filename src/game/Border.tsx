@@ -1,5 +1,5 @@
 import { BorderProps } from "../types";
-import { useBox, usePlane, useContactMaterial } from "@react-three/p2";
+import { useBox } from "@react-three/p2";
 
 export const Border = ({
   boardSize,
