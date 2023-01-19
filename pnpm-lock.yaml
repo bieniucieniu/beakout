@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@react-three/drei': ^9.53.0
   '@react-three/fiber': ^8.10.0
+  '@react-three/p2': ^0.0.6
   '@types/react': ^18.0.27
   '@types/react-dom': ^18.0.10
   '@types/three': ^0.147.1
@@ -19,6 +20,7 @@ specifiers:
 dependencies:
   '@react-three/drei': 9.53.0_dzkfhzem645tsqofbo5zccmgxm
   '@react-three/fiber': 8.10.0_4tzez3c2xpzuefjrvhpyy55bva
+  '@react-three/p2': 0.0.6_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   three: 0.148.0
@@ -679,6 +681,18 @@ packages:
       zustand: 3.7.2_react@18.2.0
     dev: false
 
+  /@react-three/p2/0.0.6_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-bQYtjBPee9yE/La79HgeRTtZO3OH7nNF1MaaD0hWPxMYjm+hq10ZyibxZZxFt95Wb+Ey8nHzcAxFDZgc7TRrrg==}
+    peerDependencies:
+      react: '>=17.0'
+      react-dom: '>=17.0'
+    dependencies:
+      events: 3.3.0
+      p2-es: 0.7.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /@types/offscreencanvas/2019.7.0:
     resolution: {integrity: sha512-PGcyveRIpL1XIqK8eBsmRBt76eFgtzuPiSTyKHZxnGemp2yzGzWpjYKAfK3wIMiU7eH+851yEpiuP8JZerTmWg==}
     dev: false
@@ -1001,6 +1015,11 @@ packages:
     engines: {node: '>=0.8.0'}
     dev: true
 
+  /events/3.3.0:
+    resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
+    engines: {node: '>=0.8.x'}
+    dev: false
+
   /fast-glob/3.2.12:
     resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
     engines: {node: '>=8.6.0'}
@@ -1266,6 +1285,12 @@ packages:
       tiny-inflate: 1.0.3
     dev: false
 
+  /p2-es/0.7.3:
+    resolution: {integrity: sha512-7+YM2IyJbEVrjjFgik9U3ZyPWORp5JUn6tYP8d7LwBUtijXfX8uQojTl2gI+MLZrrhLuuX8NebZTyVtgL+1xYA==}
+    dependencies:
+      poly-decomp: 0.2.1
+    dev: false
+
   /path-parse/1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
     dev: true
@@ -1283,6 +1308,10 @@ packages:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /poly-decomp/0.2.1:
+    resolution: {integrity: sha512-MRT1Povp45G71+YFk/ZoLtB02Fpldv3BLDYa/A82IVVSZ6rAdNKfpeZPw3jkov2bvDxfrAvRfNv/9ixo3V+eRQ==}
+    dev: false
 
   /postcss-import/14.1.0_postcss@8.4.21:
     resolution: {integrity: sha512-flwI+Vgm4SElObFVPpTIT7SU7R3qk2L7PyduMcokiaVKuWv9d/U+Gm/QAd8NDLuykTWTkcrjOeD2Pp1rMeBTGw==}
