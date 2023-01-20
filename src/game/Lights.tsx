@@ -17,11 +17,9 @@ export const Lights = ({
   const ref1 = useRef<THREE.SpotLight>(null);
   const ref2 = useRef<THREE.SpotLight>(null);
 
-  // @ts-expect-error
-  useHelper(ref1, SpotLightHelper, 0.5);
-  // @ts-expect-error
+  // useHelper(ref1, SpotLightHelper, 0.5);
 
-  useHelper(ref2, SpotLightHelper, 0.5);
+  // useHelper(ref2, SpotLightHelper, 0.5);
 
   return (
     <>
@@ -35,6 +33,8 @@ export const Lights = ({
           (boardSize[1] - 1) / 2,
           lightOffset ?? 18,
         ]}
+        shadow-mapSize-height={512}
+        shadow-mapSize-width={512}
       />
       <spotLight
         ref={ref2}
@@ -45,6 +45,8 @@ export const Lights = ({
           (boardSize[1] - 1) / 2,
           lightOffset ?? 18,
         ]}
+        shadow-mapSize-height={512}
+        shadow-mapSize-width={512}
       />
     </>
   );

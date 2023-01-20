@@ -21,7 +21,7 @@ export default ({ className }: GameProps) => {
       >
         <Board size={[BOARD_WIDTH, BOARD_HEIGHT]} />
       </Physics>
-      <Lights boardSize={[32, 24]} />
+      <Lights boardSize={[32, 24]} lightIntensity={0.3} />
     </Canvas>
   );
 };
