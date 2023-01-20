@@ -52,7 +52,7 @@ export const Board = ({ size }: BoardProps) => {
 
   useContactMaterial(PadMaterial, BallMaterial, {
     friction: 0,
-    restitution: 1.05,
+    restitution: 1.15,
   });
 
   useContactMaterial(BallMaterial, defaultMaterial, {
