@@ -29,7 +29,6 @@ export const Pad = ({
   const angleRef = useRef(0);
   useFrame(() => {
     const unsubscribe = api.angle.subscribe((v) => (angleRef.current = v));
-    console.log(angleRef.current);
 
     return unsubscribe;
   });
