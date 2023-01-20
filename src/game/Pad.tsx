@@ -53,25 +53,25 @@ export const Pad = ({
   window.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft" || e.key === "a") {
       if (posRef.current[0] <= moveRange[0] + size[0] / 2) {
-        api.velocity.set(0, 0);
+        // api.velocity.set(0, 0);
       } else {
         api.velocity.set(-10, 0);
       }
 
       if (angleRef.current >= rotationRange[1]) {
-        api.angularVelocity.set(0);
+        // api.angularVelocity.set(0);
       } else {
         api.angularVelocity.set(2);
       }
     } else if (e.key === "ArrowRight" || e.key === "d") {
       if (posRef.current[0] >= moveRange[1] - size[0] / 2) {
-        api.velocity.set(0, 0);
+        // api.velocity.set(0, 0);
       } else {
         api.velocity.set(10, 0);
       }
 
       if (angleRef.current <= rotationRange[0]) {
-        api.angularVelocity.set(0);
+        // api.angularVelocity.set(0);
       } else {
         api.angularVelocity.set(-2);
       }
