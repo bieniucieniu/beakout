@@ -40,7 +40,7 @@ export const Board = ({ size }: BoardProps) => {
 
   const BallMaterial = {
     id: 2,
-    restitution: 1,
+    restitution: 0.9,
     friction: 0,
   };
 
@@ -52,7 +52,12 @@ export const Board = ({ size }: BoardProps) => {
 
   useContactMaterial(PadMaterial, BallMaterial, {
     friction: 0,
-    restitution: 1.2,
+    restitution: 1.05,
+  });
+
+  useContactMaterial(BallMaterial, defaultMaterial, {
+    friction: 0,
+    restitution: 0.7,
   });
 
   return (
@@ -64,7 +69,12 @@ export const Board = ({ size }: BoardProps) => {
 
       <BricksGrid bricksRef={bricksRef} material={defaultMaterial} />
 
-      <Ball name="ball" material={BallMaterial} />
+      <Ball
+        name="ball"
+        material={BallMaterial}
+        boardSize={[BOARD_WIDTH, BOARD_HEIGHT]}
+        margin={3}
+      />
 
       <Border
         boardSize={[BOARD_WIDTH, BOARD_HEIGHT]}

@@ -31,6 +31,8 @@ export type BoxProps = {
 export type BallProps = {
   material: p2.MaterialOptions;
   name: string;
+  boardSize: [number, number];
+  margin: number;
 };
 
 export type LightsProps = {
