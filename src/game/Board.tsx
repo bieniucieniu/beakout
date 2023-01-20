@@ -5,11 +5,12 @@ import { Border } from "./Border";
 import { useRef } from "react";
 import { Pad } from "./Pad";
 import { BricksGrid } from "./BricksGrid";
-
-const BOARD_WIDTH = 32;
-const BOARD_HEIGHT = 24;
-const GRID_WIDTH = 12;
-const GRID_HEIGHT = 6;
+import {
+  GRID_WIDTH,
+  GRID_HEIGHT,
+  BOARD_WIDTH,
+  BOARD_HEIGHT,
+} from "./constants";
 
 export const Board = ({ size }: BoardProps) => {
   const bricksRef = useRef<BrickProps[]>(
@@ -77,6 +78,8 @@ export const Board = ({ size }: BoardProps) => {
         size={[5, 1]}
         color="red"
         material={PadMaterial}
+        movingRange={[-BOARD_WIDTH / 2, BOARD_WIDTH / 2]}
+        rotationRange={[-Math.PI / 4, Math.PI / 4]}
       />
     </>
   );

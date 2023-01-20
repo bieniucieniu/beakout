@@ -53,6 +53,8 @@ export type PadProps = {
   size: [number, number];
   color: string;
   material?: p2.MaterialOptions;
+  moveRange: [number, number];
+  rotationRange: [number, number];
 };
 
 export type BricksGridProps = {
