@@ -13,7 +13,6 @@ export default ({ className }: GameProps) => {
       <OrbitControls />
       <Physics
         normalIndex={2}
-        gravity={[0, -6]}
         defaultContactMaterial={{
           friction: 0,
           restitution: 1,
