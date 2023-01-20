@@ -78,8 +78,8 @@ export const Board = ({ size }: BoardProps) => {
         size={[5, 1]}
         color="red"
         material={PadMaterial}
-        movingRange={[-BOARD_WIDTH / 2, BOARD_WIDTH / 2]}
-        rotationRange={[-Math.PI / 4, Math.PI / 4]}
+        moveRange={[-BOARD_WIDTH / 2, BOARD_WIDTH / 2]}
+        rotationRange={[-Math.PI / 12, Math.PI / 12]}
       />
     </>
   );
