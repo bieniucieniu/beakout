@@ -1,10 +1,16 @@
 import { useFrame } from "@react-three/fiber";
 import { useCircle } from "@react-three/p2";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { Vector2 } from "three";
 import { BallProps } from "../types";
 
 export const Ball = ({ material, name, boardSize, margin }: BallProps) => {
-  const velocityVec = useRef<[number, number]>([1, 1]);
+  const velocityVec = useRef<[number, number]>(
+    new Vector2(Math.random(), Math.random())
+      .normalize()
+      .multiplyScalar(2)
+      .toArray()
+  );
 
   const [ref, api] = useCircle(() => ({
     type: "Dynamic",
@@ -19,7 +25,7 @@ export const Ball = ({ material, name, boardSize, margin }: BallProps) => {
 
   const posRef = useRef([0, 0]);
 
-  useFrame(() => {
+  useEffect(() => {
     const unsubscribe = api.position.subscribe((v) => (posRef.current = v));
     return unsubscribe;
   });

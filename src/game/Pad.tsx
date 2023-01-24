@@ -1,6 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import { useBox } from "@react-three/p2";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import type { PadProps } from "../types";
 
@@ -21,15 +21,14 @@ export const Pad = ({
   }));
 
   const posRef = useRef([0, 0]);
-  useFrame(() => {
+  useEffect(() => {
     const unsubscribe = api.position.subscribe((v) => (posRef.current = v));
     return unsubscribe;
   });
 
   const angleRef = useRef(0);
-  useFrame(() => {
+  useEffect(() => {
     const unsubscribe = api.angle.subscribe((v) => (angleRef.current = v));
-
     return unsubscribe;
   });
 
