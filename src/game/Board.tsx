@@ -86,7 +86,7 @@ export const Board = ({ size }: BoardProps) => {
       <Pad
         position={[0, -BOARD_HEIGHT / 2 + 1]}
         size={[5, 1]}
-        color="red"
+        color="navi"
         material={PadMaterial}
         moveRange={[-BOARD_WIDTH / 2, BOARD_WIDTH / 2]}
         rotationRange={[-Math.PI / 12, Math.PI / 12]}
