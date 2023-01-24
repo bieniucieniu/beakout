@@ -1,4 +1,5 @@
 import { useBox } from "@react-three/p2";
+import { useRef, useState } from "react";
 import type { BrickProps } from "../types";
 
 export const Brick = ({
@@ -7,7 +8,12 @@ export const Brick = ({
   size,
   name,
   material,
+  points,
 }: BrickProps) => {
+  const pointsTracker = useRef(points);
+  const [colorState, setColorState] = useState(
+    `#0${pointsTracker}0${pointsTracker}0${pointsTracker}`
+  );
   const [ref, api] = useBox(() => ({
     mass: 0,
     position: [position[0], position[1]],
@@ -16,8 +22,14 @@ export const Brick = ({
     collisionResponse: true,
     onCollideBegin: (e) => {
       if (e.body.name === "ball") {
-        ref.current!.removeFromParent();
-        api.collisionResponse.set(false);
+        pointsTracker.current -= 1;
+        setColorState(
+          `0x0${pointsTracker.current}0${pointsTracker.current}0${pointsTracker.current}`
+        );
+        if (pointsTracker.current === 0) {
+          ref.current!.removeFromParent();
+          api.collisionResponse.set(false);
+        }
       }
     },
   }));
@@ -27,7 +39,10 @@ export const Brick = ({
       {/* @ts-ignore */}
       <mesh ref={ref} name={name}>
         <boxGeometry args={[...size, 1]} />
-        <meshStandardMaterial color={color} />
+        <meshStandardMaterial
+          // color={`#0${pointsTracker}0${pointsTracker}0${pointsTracker}`}
+          color={colorState}
+        />
       </mesh>
     </>
   );
