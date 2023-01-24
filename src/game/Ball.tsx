@@ -6,10 +6,11 @@ import { BallProps } from "../types";
 
 export const Ball = ({ material, name, boardSize, margin }: BallProps) => {
   const velocityVec = useRef<[number, number]>(
-    new Vector2(Math.random(), Math.random())
-      .normalize()
-      .multiplyScalar(2)
-      .toArray()
+    // new Vector2(Math.random(), Math.random())
+    //   .normalize()
+    //   .multiplyScalar(5)
+    //   .toArray()
+    [0, 0]
   );
 
   const [ref, api] = useCircle(() => ({
