@@ -1,8 +1,3 @@
-import { PublicApi } from "@react-three/p2";
-import { Object3D } from "three";
-
-export {};
-
 export type BrickProps = {
   position: [number, number, number];
   size: [number, number];
