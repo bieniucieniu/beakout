@@ -9,6 +9,7 @@ export const Brick = ({
   name,
   material,
   points,
+  removeBrick,
 }: BrickProps) => {
   const pointsTracker = useRef(points);
   const [colorState, setColorState] = useState(
@@ -29,6 +30,7 @@ export const Brick = ({
         if (pointsTracker.current === 0) {
           ref.current!.removeFromParent();
           api.collisionResponse.set(false);
+          if (removeBrick) removeBrick(name);
         }
       }
     },

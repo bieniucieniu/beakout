@@ -11,6 +11,7 @@ import {
   BOARD_WIDTH,
   BOARD_HEIGHT,
 } from "./constants";
+import { useThree } from "@react-three/fiber";
 
 export const Board = ({ size }: BoardProps) => {
   const bricksRef = useRef<BrickProps[]>(
@@ -31,6 +32,15 @@ export const Board = ({ size }: BoardProps) => {
       name: `brick-${i}`,
     }))
   );
+
+  const removeBrick = (brickName: string) => {
+    bricksRef.current = bricksRef.current.filter((b) => b.name !== brickName);
+    console.log(bricksRef.current);
+
+    if (bricksRef.current.length === 0) {
+      alert("You win!");
+    }
+  };
 
   const PadMaterial = {
     id: 1,
@@ -67,7 +77,11 @@ export const Board = ({ size }: BoardProps) => {
         <meshStandardMaterial color="hotpink" />
       </mesh>
 
-      <BricksGrid bricksRef={bricksRef} material={defaultMaterial} />
+      <BricksGrid
+        bricksRef={bricksRef}
+        material={defaultMaterial}
+        removeBrick={removeBrick}
+      />
 
       <Ball
         name="ball"
