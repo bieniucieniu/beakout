@@ -11,10 +11,17 @@ export type BrickProps = {
 
 export type GameProps = {
   className?: string;
+  isPaused: boolean;
+  setIsPaused: (isPaused: boolean) => void;
+  score: number;
+  setScore: (score: number) => void;
 };
 
 export type BoardProps = {
   size: [number, number];
+  score: number;
+  setScore: (score: number) => void;
+  setIsPaused: (isPaused: boolean) => void;
 };
 
 export type BoxProps = {

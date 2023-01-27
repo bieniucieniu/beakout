@@ -7,18 +7,30 @@ import { Physics } from "@react-three/p2";
 const BOARD_WIDTH = 32;
 const BOARD_HEIGHT = 24;
 
-export default ({ className }: GameProps) => {
+export default ({
+  className,
+  isPaused,
+  setIsPaused,
+  score,
+  setScore,
+}: GameProps) => {
   return (
-    <Canvas className={className} camera={{ position: [0, 0, 18] }}>
-      <OrbitControls />
+    <Canvas className={className} camera={{ position: [0, 0, 24] }}>
+      {/* <OrbitControls /> */}
       <Physics
         normalIndex={2}
         defaultContactMaterial={{
           friction: 0,
           restitution: 1,
         }}
+        isPaused={isPaused}
       >
-        <Board size={[BOARD_WIDTH, BOARD_HEIGHT]} />
+        <Board
+          size={[BOARD_WIDTH, BOARD_HEIGHT]}
+          score={score}
+          setScore={setScore}
+          setIsPaused={setIsPaused}
+        />
       </Physics>
       <Lights boardSize={[32, 24]} lightIntensity={0.3} />
     </Canvas>

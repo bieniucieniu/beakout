@@ -5,15 +5,15 @@ import { Border } from "./Border";
 import { useRef } from "react";
 import { Pad } from "./Pad";
 import { BricksGrid } from "./BricksGrid";
+import materials from "./materials";
 import {
   GRID_WIDTH,
   GRID_HEIGHT,
   BOARD_WIDTH,
   BOARD_HEIGHT,
 } from "./constants";
-import { useThree } from "@react-three/fiber";
 
-export const Board = ({ size }: BoardProps) => {
+export const Board = ({ size, score, setScore, setIsPaused }: BoardProps) => {
   const bricksRef = useRef<BrickProps[]>(
     Array.from({ length: GRID_WIDTH * GRID_HEIGHT }, (_, i) => ({
       position: [
@@ -33,13 +33,15 @@ export const Board = ({ size }: BoardProps) => {
     }))
   );
 
-  const removeBrick = (brickName: string) => {
-    bricksRef.current = bricksRef.current.filter((b) => b.name !== brickName);
-    console.log(bricksRef.current);
-
-    if (bricksRef.current.length === 0) {
+  const brickHit = (brickName: string) => {
+    if (bricksRef.current.length === 1) {
       alert("You win!");
+      setIsPaused(true);
     }
+    bricksRef.current = bricksRef.current.filter((b) => b.name !== brickName);
+    console.log(score);
+    setScore(score + 1);
+    console.log(bricksRef.current);
   };
 
   const PadMaterial = {
@@ -80,7 +82,7 @@ export const Board = ({ size }: BoardProps) => {
       <BricksGrid
         bricksRef={bricksRef}
         material={defaultMaterial}
-        removeBrick={removeBrick}
+        removeBrick={brickHit}
       />
 
       <Ball
@@ -99,7 +101,7 @@ export const Board = ({ size }: BoardProps) => {
       />
       <Pad
         position={[0, -BOARD_HEIGHT / 2 + 1]}
-        size={[5, 1]}
+        size={[BOARD_WIDTH - 1, 1]}
         color="navi"
         material={PadMaterial}
         moveRange={[-BOARD_WIDTH / 2, BOARD_WIDTH / 2]}
