@@ -12,6 +12,7 @@ import {
   BOARD_WIDTH,
   BOARD_HEIGHT,
 } from "./constants";
+import { useThree } from "@react-three/fiber";
 
 export const Board = ({ size, score, setScore, setIsPaused }: BoardProps) => {
   const bricksRef = useRef<BrickProps[]>(
@@ -44,30 +45,12 @@ export const Board = ({ size, score, setScore, setIsPaused }: BoardProps) => {
     console.log(bricksRef.current);
   };
 
-  const PadMaterial = {
-    id: 1,
-    restitution: 1,
-    friction: 0,
-  };
-
-  const BallMaterial = {
-    id: 2,
-    restitution: 0.9,
-    friction: 0,
-  };
-
-  const defaultMaterial = {
-    id: 3,
-    restitution: 0.9,
-    friction: 0,
-  };
-
-  useContactMaterial(PadMaterial, BallMaterial, {
+  useContactMaterial(materials.pad, materials.ball, {
     friction: 0,
     restitution: 1.15,
   });
 
-  useContactMaterial(BallMaterial, defaultMaterial, {
+  useContactMaterial(materials.ball, materials.default, {
     friction: 0,
     restitution: 0.7,
   });
@@ -81,13 +64,13 @@ export const Board = ({ size, score, setScore, setIsPaused }: BoardProps) => {
 
       <BricksGrid
         bricksRef={bricksRef}
-        material={defaultMaterial}
+        material={materials.default}
         removeBrick={brickHit}
       />
 
       <Ball
         name="ball"
-        material={BallMaterial}
+        material={materials.ball}
         boardSize={[BOARD_WIDTH, BOARD_HEIGHT]}
         margin={3}
       />
@@ -97,13 +80,13 @@ export const Board = ({ size, score, setScore, setIsPaused }: BoardProps) => {
         height={1}
         depth={2}
         color="red"
-        material={defaultMaterial}
+        material={materials.default}
       />
       <Pad
         position={[0, -BOARD_HEIGHT / 2 + 1]}
         size={[BOARD_WIDTH - 1, 1]}
         color="navi"
-        material={PadMaterial}
+        material={materials.pad}
         moveRange={[-BOARD_WIDTH / 2, BOARD_WIDTH / 2]}
         rotationRange={[-Math.PI / 12, Math.PI / 12]}
       />
