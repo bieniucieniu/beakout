@@ -5,7 +5,7 @@ import { Border } from "./Border";
 import { useRef } from "react";
 import { Pad } from "./Pad";
 import { BricksGrid } from "./BricksGrid";
-import materials from "./materials";
+import config from "../config.json";
 import {
   GRID_WIDTH,
   GRID_HEIGHT,
@@ -13,25 +13,36 @@ import {
   BOARD_HEIGHT,
 } from "./constants";
 
-export const Board = ({ size, score, setScore, setIsPaused }: BoardProps) => {
+export const Board = ({
+  size,
+  score,
+  setScore,
+  isPaused,
+  setIsPaused,
+}: BoardProps) => {
   const scoreRef = useRef(score);
   const bricksRef = useRef<BrickProps[]>(
-    Array.from({ length: GRID_WIDTH * GRID_HEIGHT }, (_, i) => ({
-      position: [
-        (i % GRID_WIDTH) * (BOARD_WIDTH / GRID_WIDTH) -
-          BOARD_WIDTH / 2 +
-          BOARD_WIDTH / GRID_WIDTH / 2,
-        Math.floor(i / GRID_WIDTH) * (BOARD_HEIGHT / GRID_HEIGHT / 2) +
-          BOARD_HEIGHT / GRID_HEIGHT / 2 -
-          1,
-        0,
-      ],
-      size: [2, 1],
-      depth: 1,
-      color: "red",
-      points: 1,
-      name: `brick-${i}`,
-    }))
+    Array.from(
+      { length: config.game.board.grid.width * config.game.board.grid.height },
+      (_, i) => ({
+        position: [
+          (i % config.game.board.grid.width) *
+            (config.game.board.width / config.game.board.grid.width) -
+            config.game.board.width / 2 +
+            config.game.board.width / config.game.board.grid.width / 2,
+          Math.floor(i / config.game.board.grid.width) *
+            (config.game.board.height / config.game.board.grid.height / 2) +
+            config.game.board.height / config.game.board.grid.height / 2 -
+            1,
+          0,
+        ],
+        size: config.game.brick.size as [number, number],
+        depth: config.game.brick.depth,
+        colors: config.game.brick.colors,
+        points: i % config.game.brick.maxPoinst,
+        name: `brick-${i}`,
+      })
+    )
   );
 
   const brickHit = (brickName: string) => {
@@ -44,15 +55,17 @@ export const Board = ({ size, score, setScore, setIsPaused }: BoardProps) => {
     console.log(bricksRef.current);
   };
 
-  useContactMaterial(materials.pad, materials.ball, {
-    friction: 0,
-    restitution: 1.15,
-  });
+  useContactMaterial(
+    config.game.materials.pad,
+    config.game.materials.ball,
+    config.game.materials.padBall
+  );
 
-  useContactMaterial(materials.ball, materials.default, {
-    friction: 0,
-    restitution: 0.7,
-  });
+  useContactMaterial(
+    config.game.materials.ball,
+    config.game.materials.default,
+    config.game.materials.ballDefault
+  );
 
   return (
     <>
@@ -63,31 +76,33 @@ export const Board = ({ size, score, setScore, setIsPaused }: BoardProps) => {
 
       <BricksGrid
         bricksRef={bricksRef}
-        material={materials.default}
+        material={config.game.materials.default}
         removeBrick={brickHit}
       />
 
       <Ball
         name="ball"
-        material={materials.ball}
-        boardSize={[BOARD_WIDTH, BOARD_HEIGHT]}
+        material={config.game.materials.ball}
+        boardSize={[config.game.board.width, config.game.board.height]}
         margin={3}
+        isPaused={isPaused}
       />
 
       <Border
-        boardSize={[BOARD_WIDTH, BOARD_HEIGHT]}
+        boardSize={[config.game.board.width, config.game.board.height]}
         height={1}
         depth={2}
         color="red"
-        material={materials.default}
+        material={config.game.materials.default}
       />
       <Pad
-        position={[0, -BOARD_HEIGHT / 2 + 1]}
-        size={[5, 1]}
-        color="navi"
-        material={materials.pad}
-        moveRange={[-BOARD_WIDTH / 2, BOARD_WIDTH / 2]}
-        rotationRange={[-Math.PI / 12, Math.PI / 12]}
+        position={[0, -config.game.board.height / 2 + 1]}
+        size={config.game.pad.size as [number, number]}
+        depth={config.game.pad.depth}
+        color={config.game.pad.color}
+        material={config.game.materials.pad}
+        moveRange={[-config.game.board.width / 2, config.game.board.width / 2]}
+        rotationRange={config.game.pad.rotationRange as [number, number]}
       />
     </>
   );

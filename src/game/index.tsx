@@ -30,6 +30,7 @@ export default ({
           score={score}
           setScore={setScore}
           setIsPaused={setIsPaused}
+          isPaused={isPaused}
         />
       </Physics>
       <Lights boardSize={[32, 24]} lightIntensity={0.3} />

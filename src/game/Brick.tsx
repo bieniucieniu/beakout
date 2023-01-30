@@ -1,10 +1,11 @@
 import { useBox } from "@react-three/p2";
 import { useRef, useState } from "react";
 import type { BrickProps } from "../types";
+import config from "../config.json";
 
 export const Brick = ({
   position,
-  color,
+  colors,
   size,
   name,
   material,
@@ -12,11 +13,9 @@ export const Brick = ({
   removeBrick,
 }: BrickProps) => {
   const pointsTracker = useRef(points);
-  const [colorState, setColorState] = useState(
-    `#0${pointsTracker}0${pointsTracker}0${pointsTracker}`
-  );
+  const [colorState, setColorState] = useState(`blue`);
   const [ref, api] = useBox(() => ({
-    mass: 0,
+    mass: config.game.brick.mass,
     position: [position[0], position[1]],
     args: size,
     material,
@@ -43,7 +42,7 @@ export const Brick = ({
         <boxGeometry args={[...size, 1]} />
         <meshStandardMaterial
           // color={`#0${pointsTracker}0${pointsTracker}0${pointsTracker}`}
-          color={colorState}
+          color={colors[pointsTracker.current - 1]}
         />
       </mesh>
     </>

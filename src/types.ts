@@ -1,7 +1,7 @@
 export type BrickProps = {
   position: [number, number, number];
   size: [number, number];
-  color: string;
+  colors: string[];
   depth: number;
   points: number;
   name: string;
@@ -20,6 +20,7 @@ export type GameProps = {
 export type BoardProps = {
   size: [number, number];
   score: number;
+  isPaused: boolean;
   setScore: (score: number) => void;
   setIsPaused: (isPaused: boolean) => void;
 };
@@ -36,6 +37,7 @@ export type BallProps = {
   name: string;
   boardSize: [number, number];
   margin: number;
+  isPaused: boolean;
 };
 
 export type LightsProps = {
@@ -56,6 +58,7 @@ export type BorderProps = {
 export type PadProps = {
   position: [number, number];
   size: [number, number];
+  depth: number;
   color: string;
   material?: p2.MaterialOptions;
   moveRange: [number, number];

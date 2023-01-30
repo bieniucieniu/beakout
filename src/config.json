@@ -4,7 +4,79 @@
       "mass": 0.1,
       "defaultPosition": [0, 0],
       "defaultVelocity": [0, 0],
-      "args": [0.4]
+      "args": [0.4],
+      "idleTimeLimit": 180,
+      "awaikeningVelocity": [0, 1]
+    },
+
+    "board": {
+      "width": 32,
+      "height": 24,
+      "grid": {
+        "width": 12,
+        "height": 6
+      }
+    },
+
+    "brick": {
+      "mass": 0,
+      "size": [2, 1],
+      "depth": 1,
+      "colors": [
+        "green",
+        "blue",
+        "yellow",
+        "purple",
+        "orange",
+        "cyan",
+        "magenta",
+        "lime",
+        "pink",
+        "teal",
+        "lavender",
+        "brown",
+        "beige",
+        "maroon",
+        "olive",
+        "coral",
+        "navy",
+        "grey",
+        "black"
+      ],
+      "maxPoinst": 19
+    },
+
+    "pad": {
+      "size": [4, 1],
+      "depth": 1,
+      "color": "white",
+      "rotationRange": [-0.262, 0.261]
+    },
+
+    "materials": {
+      "pad": {
+        "id": 1,
+        "restitution": 1,
+        "friction": 0
+      },
+      "ball": {
+        "id": 2,
+        "restitution": 1,
+        "friction": 0
+      },
+      "default": {
+        "id": 3,
+        "restitution": 1,
+        "friction": 0
+      },
+      "padBall": {
+        "friction": 0,
+        "restitution": 1.15
+      },
+      "ballDefault": {
+        "friction": 0,
+        "restitution": 0.7
+      }
     }
   }
 }
