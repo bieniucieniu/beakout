@@ -5,14 +5,6 @@ import { Vector2 } from "three";
 import { BallProps } from "../types";
 
 export const Ball = ({ material, name, boardSize, margin }: BallProps) => {
-  const velocityVec = useRef<[number, number]>(
-    // new Vector2(Math.random(), Math.random())
-    //   .normalize()
-    //   .multiplyScalar(5)
-    //   .toArray()
-    [0, 0]
-  );
-
   const [ref, api] = useCircle(() => ({
     type: "Dynamic",
     mass: 0.1,
@@ -20,7 +12,7 @@ export const Ball = ({ material, name, boardSize, margin }: BallProps) => {
     args: [0.4],
     friction: 0,
     collisionResponse: true,
-    velocity: velocityVec.current,
+    velocity: [0, 0],
     material,
   }));
 
