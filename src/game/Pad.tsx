@@ -1,6 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { useBox } from "@react-three/p2";
 import { useEffect, useRef } from "react";
+import config from "../config.json";
 
 import type { PadProps } from "../types";
 
@@ -53,25 +54,25 @@ export const Pad = ({
       if (posRef.current[0] <= moveRange[0] + size[0] / 2) {
         // api.velocity.set(0, 0);
       } else {
-        api.velocity.set(-10, 0);
+        api.velocity.set(-config.game.pad.velocity, 0);
       }
 
       if (angleRef.current >= rotationRange[1]) {
         // api.angularVelocity.set(0);
       } else {
-        api.angularVelocity.set(2);
+        api.angularVelocity.set(config.game.pad.angularVelocity);
       }
     } else if (e.key === "ArrowRight" || e.key === "d") {
       if (posRef.current[0] >= moveRange[1] - size[0] / 2) {
         // api.velocity.set(0, 0);
       } else {
-        api.velocity.set(10, 0);
+        api.velocity.set(config.game.pad.velocity, 0);
       }
 
       if (angleRef.current <= rotationRange[0]) {
         // api.angularVelocity.set(0);
       } else {
-        api.angularVelocity.set(-2);
+        api.angularVelocity.set(-config.game.pad.angularVelocity);
       }
     }
   });

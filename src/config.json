@@ -50,7 +50,9 @@
       "size": [4, 1],
       "depth": 1,
       "color": "white",
-      "rotationRange": [-0.262, 0.261]
+      "rotationRange": [-0.262, 0.261],
+      "velocity": 10,
+      "angularVelocity": 2
     },
 
     "materials": {
