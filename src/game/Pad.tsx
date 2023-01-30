@@ -35,9 +35,9 @@ export const Pad = ({
 
   useFrame(() => {
     if (posRef.current[0] <= moveRange[0] + size[0] / 2) {
-      api.position.set(moveRange[0] + size[0] / 2, posRef.current[1]);
+      api.position.set(moveRange[0] + size[0] / 2 + 0.02, posRef.current[1]);
     } else if (posRef.current[0] >= moveRange[1] - size[0] / 2) {
-      api.position.set(moveRange[1] - size[0] / 2, posRef.current[1]);
+      api.position.set(moveRange[1] - size[0] / 2 - 0.02, posRef.current[1]);
     }
 
     if (angleRef.current < rotationRange[0]) {
@@ -89,10 +89,14 @@ export const Pad = ({
     }
   });
 
+  const handleClick = () => {
+    console.log(posRef.current, angleRef.current, ref);
+  };
+
   return (
     <>
       {/* @ts-ignore */}
-      <mesh ref={ref} name={"pad"}>
+      <mesh ref={ref} name={"pad"} onClick={handleClick}>
         <boxGeometry args={size} />
         <meshStandardMaterial color={color} />
       </mesh>
