@@ -18,32 +18,31 @@
       }
     },
 
+    "border": {
+      "depth": 2,
+      "height": 1,
+      "color": "white"
+    },
+
     "brick": {
       "mass": 0,
       "size": [2, 1],
       "depth": 1,
       "colors": [
-        "green",
-        "blue",
-        "yellow",
-        "purple",
-        "orange",
-        "cyan",
-        "magenta",
-        "lime",
-        "pink",
-        "teal",
-        "lavender",
-        "brown",
-        "beige",
-        "maroon",
-        "olive",
-        "coral",
-        "navy",
-        "grey",
-        "black"
+        "hsl(0, 100%, 50%)",
+        "hsl(30, 100%, 50%)",
+        "hsl(60, 100%, 50%)",
+        "hsl(90, 100%, 50%)",
+        "hsl(120, 100%, 50%)",
+        "hsl(150, 100%, 50%)",
+        "hsl(180, 100%, 50%)",
+        "hsl(210, 100%, 50%)",
+        "hsl(240, 100%, 50%)",
+        "hsl(270, 100%, 50%)",
+        "hsl(300, 100%, 50%)",
+        "hsl(330, 100%, 50%)"
       ],
-      "maxPoinst": 19
+      "maxPoinst": 12
     },
 
     "pad": {
@@ -51,8 +50,9 @@
       "depth": 1,
       "color": "white",
       "rotationRange": [-0.262, 0.261],
-      "velocity": 10,
-      "angularVelocity": 2
+      "velocity": 15,
+      "angularVelocity": 2,
+      "boostMultiplier": 1.5
     },
 
     "materials": {

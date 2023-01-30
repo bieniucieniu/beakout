@@ -34,11 +34,14 @@ export const Brick = ({
       }
     },
   }));
+  const handleOnClick = () => {
+    console.log(pointsTracker.current);
+  };
 
   return (
     <>
       {/* @ts-ignore */}
-      <mesh ref={ref} name={name}>
+      <mesh ref={ref} name={name} onClick={handleOnClick}>
         <boxGeometry args={[...size, 1]} />
         <meshStandardMaterial
           // color={`#0${pointsTracker}0${pointsTracker}0${pointsTracker}`}

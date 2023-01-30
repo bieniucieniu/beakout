@@ -52,7 +52,6 @@ export const Board = ({
     }
     bricksRef.current = bricksRef.current.filter((b) => b.name !== brickName);
     setScore(++scoreRef.current);
-    console.log(bricksRef.current);
   };
 
   useContactMaterial(
@@ -90,9 +89,9 @@ export const Board = ({
 
       <Border
         boardSize={[config.game.board.width, config.game.board.height]}
-        height={1}
-        depth={2}
-        color="red"
+        height={config.game.border.height}
+        depth={config.game.border.depth}
+        color={config.game.border.color}
         material={config.game.materials.default}
       />
       <Pad

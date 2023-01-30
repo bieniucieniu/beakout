@@ -42,7 +42,6 @@ export const Ball = ({ material, name, boardSize, margin }: BallProps) => {
     } else if (posRef.current[1] >= boardSize[1] / 2 + margin) {
       api.position.set(posRef.current[0], boardSize[1] / 2 - margin);
     }
-    console.log(velocityRef.current);
 
     if (
       // velocityRef.current[0] < 0.0001 &&

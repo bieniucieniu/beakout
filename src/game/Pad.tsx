@@ -20,6 +20,7 @@ export const Pad = ({
     collisionResponse: true,
     material,
   }));
+  const boostRef = useRef(false);
 
   const posRef = useRef([0, 0]);
   useEffect(() => {
@@ -54,7 +55,12 @@ export const Pad = ({
       if (posRef.current[0] <= moveRange[0] + size[0] / 2) {
         // api.velocity.set(0, 0);
       } else {
-        api.velocity.set(-config.game.pad.velocity, 0);
+        api.velocity.set(
+          boostRef.current
+            ? -config.game.pad.velocity * config.game.pad.boostMultiplier
+            : -config.game.pad.velocity,
+          0
+        );
       }
 
       if (angleRef.current >= rotationRange[1]) {
@@ -66,7 +72,12 @@ export const Pad = ({
       if (posRef.current[0] >= moveRange[1] - size[0] / 2) {
         // api.velocity.set(0, 0);
       } else {
-        api.velocity.set(config.game.pad.velocity, 0);
+        api.velocity.set(
+          boostRef.current
+            ? config.game.pad.velocity * config.game.pad.boostMultiplier
+            : config.game.pad.velocity,
+          0
+        );
       }
 
       if (angleRef.current <= rotationRange[0]) {
@@ -74,6 +85,11 @@ export const Pad = ({
       } else {
         api.angularVelocity.set(-config.game.pad.angularVelocity);
       }
+    }
+
+    if (e.key === " ") {
+      boostRef.current = true;
+      console.log("chuj");
     }
   });
 
@@ -86,6 +102,10 @@ export const Pad = ({
     ) {
       api.velocity.set(0, 0);
       api.angularVelocity.set(0);
+    }
+
+    if (e.key === " ") {
+      boostRef.current = false;
     }
   });
 
