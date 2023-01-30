@@ -12,9 +12,9 @@ import {
   BOARD_WIDTH,
   BOARD_HEIGHT,
 } from "./constants";
-import { useThree } from "@react-three/fiber";
 
 export const Board = ({ size, score, setScore, setIsPaused }: BoardProps) => {
+  const scoreRef = useRef(score);
   const bricksRef = useRef<BrickProps[]>(
     Array.from({ length: GRID_WIDTH * GRID_HEIGHT }, (_, i) => ({
       position: [
@@ -40,8 +40,7 @@ export const Board = ({ size, score, setScore, setIsPaused }: BoardProps) => {
       setIsPaused(true);
     }
     bricksRef.current = bricksRef.current.filter((b) => b.name !== brickName);
-    console.log(score);
-    setScore(score + 1);
+    setScore(++scoreRef.current);
     console.log(bricksRef.current);
   };
 
@@ -84,7 +83,7 @@ export const Board = ({ size, score, setScore, setIsPaused }: BoardProps) => {
       />
       <Pad
         position={[0, -BOARD_HEIGHT / 2 + 1]}
-        size={[BOARD_WIDTH - 1, 1]}
+        size={[5, 1]}
         color="navi"
         material={materials.pad}
         moveRange={[-BOARD_WIDTH / 2, BOARD_WIDTH / 2]}
