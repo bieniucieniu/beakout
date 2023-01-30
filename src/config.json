@@ -6,7 +6,7 @@
       "defaultVelocity": [0, 0],
       "args": [0.4],
       "idleTimeLimit": 180,
-      "awaikeningVelocity": [0, 1]
+      "awaikeningVelocity": 1
     },
 
     "board": {

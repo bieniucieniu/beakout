@@ -52,8 +52,9 @@ export const Ball = ({ material, name, boardSize, margin }: BallProps) => {
       VelTimerRef.current++;
 
       if (VelTimerRef.current > config.game.ball.idleTimeLimit) {
-        api.velocity.copy(
-          config.game.ball.awaikeningVelocity as [number, number]
+        api.velocity.set(
+          (Math.random() - 0.5) * config.game.ball.awaikeningVelocity,
+          config.game.ball.awaikeningVelocity
         );
         VelTimerRef.current = 0;
       }
