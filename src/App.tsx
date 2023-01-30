@@ -14,7 +14,7 @@ export const App = () => {
   );
 
   return (
-    <div className="w-screen h-screen grid bg-zinc-600">
+    <div className="w-screen h-screen grid ">
       <nav className="h-12 bg-cyan-300 grid grid-cols-2">
         <button
           className=""

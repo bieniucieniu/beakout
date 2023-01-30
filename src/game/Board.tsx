@@ -69,10 +69,10 @@ export const Board = ({
 
   return (
     <>
-      <mesh position={[0, 0, -1]}>
+      {/* <mesh position={[0, 0, -1]}>
         <planeGeometry args={size} />
         <meshStandardMaterial color="hotpink" />
-      </mesh>
+      </mesh> */}
 
       <BricksGrid
         bricksRef={bricksRef}
