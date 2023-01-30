@@ -1,0 +1,10 @@
+{
+  "game": {
+    "ball": {
+      "mass": 0.1,
+      "defaultPosition": [0, 0],
+      "defaultVelocity": [0, 0],
+      "args": [0.4]
+    }
+  }
+}

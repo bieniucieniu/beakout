@@ -1,22 +1,21 @@
 import { useFrame } from "@react-three/fiber";
 import { useCircle } from "@react-three/p2";
 import { useEffect, useRef } from "react";
-import { Vector2 } from "three";
 import { BallProps } from "../types";
+import config from "../config.json";
 
 export const Ball = ({ material, name, boardSize, margin }: BallProps) => {
+  const ballConfig = config.game.ball;
   const [ref, api] = useCircle(() => ({
     type: "Dynamic",
-    mass: 0.1,
-    position: [0, 0],
-    args: [0.4],
-    friction: 0,
-    collisionResponse: true,
-    velocity: [0, 0],
+    mass: ballConfig.mass,
+    position: ballConfig.defaultPosition as [number, number],
+    args: ballConfig.args as [number],
+    velocity: ballConfig.defaultVelocity as [number, number],
     material,
   }));
 
-  const posRef = useRef([0, 0]);
+  const posRef = useRef(ballConfig.defaultPosition as [number, number]);
 
   useEffect(() => {
     const unsubscribe = api.position.subscribe((v) => (posRef.current = v));
@@ -40,7 +39,7 @@ export const Ball = ({ material, name, boardSize, margin }: BallProps) => {
   return (
     //@ts-ignore
     <mesh ref={ref} name={name}>
-      <sphereGeometry args={[0.4]} />
+      <sphereGeometry args={ballConfig.args as [number]} />
       <meshStandardMaterial color="green" />
     </mesh>
   );
