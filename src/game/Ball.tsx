@@ -5,22 +5,30 @@ import { BallProps } from "../types";
 import config from "../config.json";
 
 export const Ball = ({ material, name, boardSize, margin }: BallProps) => {
-  const ballConfig = config.game.ball;
   const [ref, api] = useCircle(() => ({
     type: "Dynamic",
-    mass: ballConfig.mass,
-    position: ballConfig.defaultPosition as [number, number],
-    args: ballConfig.args as [number],
-    velocity: ballConfig.defaultVelocity as [number, number],
+    mass: config.game.ball.mass,
+    position: config.game.ball.defaultPosition as [number, number],
+    args: config.game.ball.args as [number],
+    velocity: config.game.ball.defaultVelocity as [number, number],
     material,
   }));
 
-  const posRef = useRef(ballConfig.defaultPosition as [number, number]);
-
+  const posRef = useRef(config.game.ball.defaultPosition as [number, number]);
   useEffect(() => {
     const unsubscribe = api.position.subscribe((v) => (posRef.current = v));
     return unsubscribe;
   });
+
+  const velocityRef = useRef(config.game.ball.defaultVelocity);
+  useEffect(() => {
+    const unsubscribe = api.velocity.subscribe(
+      (v) => (velocityRef.current = v)
+    );
+    return unsubscribe;
+  });
+
+  const VelTimerRef = useRef(0);
 
   useFrame(() => {
     if (posRef.current[0] <= -boardSize[0] / 2 - margin) {
@@ -34,12 +42,30 @@ export const Ball = ({ material, name, boardSize, margin }: BallProps) => {
     } else if (posRef.current[1] >= boardSize[1] / 2 + margin) {
       api.position.set(posRef.current[0], boardSize[1] / 2 - margin);
     }
+
+    if (
+      velocityRef.current[0] < 0.0001 &&
+      velocityRef.current[1] < 0.0001 &&
+      velocityRef.current[0] > -0.0001 &&
+      velocityRef.current[1] > -0.0001
+    ) {
+      VelTimerRef.current++;
+
+      if (VelTimerRef.current > config.game.ball.idleTimeLimit) {
+        api.velocity.copy(
+          config.game.ball.awaikeningVelocity as [number, number]
+        );
+        VelTimerRef.current = 0;
+      }
+    } else {
+      VelTimerRef.current = 0;
+    }
   });
 
   return (
     //@ts-ignore
     <mesh ref={ref} name={name}>
-      <sphereGeometry args={ballConfig.args as [number]} />
+      <sphereGeometry args={config.game.ball.args as [number]} />
       <meshStandardMaterial color="green" />
     </mesh>
   );
