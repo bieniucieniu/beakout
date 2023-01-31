@@ -50,9 +50,9 @@
       "depth": 1,
       "color": "white",
       "rotationRange": [-0.262, 0.261],
-      "velocity": 15,
+      "velocity": 20,
       "angularVelocity": 2,
-      "boostMultiplier": 1.5
+      "boostMultiplier": 2.5
     },
 
     "materials": {
@@ -61,20 +61,22 @@
         "restitution": 1,
         "friction": 0
       },
+
       "ball": {
-        "id": 2,
+        "id": 3,
         "restitution": 1,
         "friction": 0
       },
       "default": {
-        "id": 3,
+        "id": 4,
         "restitution": 1,
         "friction": 0
       },
       "padBall": {
         "friction": 0,
-        "restitution": 1.15
+        "restitution": 1
       },
+
       "ballDefault": {
         "friction": 0,
         "restitution": 0.7
