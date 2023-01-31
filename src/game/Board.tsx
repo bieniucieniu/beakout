@@ -8,7 +8,6 @@ import { BricksGrid } from "./BricksGrid";
 import config from "../config.json";
 
 export const Board = ({
-  size,
   score,
   setScore,
   isPaused,
@@ -64,11 +63,6 @@ export const Board = ({
 
   return (
     <>
-      {/* <mesh position={[0, 0, -1]}>
-        <planeGeometry args={size} />
-        <meshStandardMaterial color="hotpink" />
-      </mesh> */}
-
       <BricksGrid
         bricksRef={bricksRef}
         material={config.game.materials.default}
