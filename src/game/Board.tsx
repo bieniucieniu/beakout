@@ -35,7 +35,7 @@ export const Board = ({
         size: config.game.brick.size as [number, number],
         depth: config.game.brick.depth,
         colors: config.game.brick.colors,
-        points: (i % (maxPoints - 1)) + 1,
+        points: (i % maxPoints) + 1,
         name: `brick-${i}`,
       })
     )
