@@ -6,12 +6,6 @@ import { useRef } from "react";
 import { Pad } from "./Pad";
 import { BricksGrid } from "./BricksGrid";
 import config from "../config.json";
-import {
-  GRID_WIDTH,
-  GRID_HEIGHT,
-  BOARD_WIDTH,
-  BOARD_HEIGHT,
-} from "./constants";
 
 export const Board = ({
   size,
