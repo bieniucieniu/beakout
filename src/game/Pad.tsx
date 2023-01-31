@@ -1,5 +1,5 @@
 import { useFrame } from "@react-three/fiber";
-import { useBox } from "@react-three/p2";
+import { useBox, useContactMaterial } from "@react-three/p2";
 import { useEffect, useRef } from "react";
 import config from "../config.json";
 
@@ -20,7 +20,6 @@ export const Pad = ({
     collisionResponse: true,
     material,
   }));
-  const boostRef = useRef(false);
 
   const posRef = useRef([0, 0]);
   useEffect(() => {
@@ -50,11 +49,13 @@ export const Pad = ({
     }
   });
 
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft" || e.key === "a") {
-      if (posRef.current[0] <= moveRange[0] + size[0] / 2) {
-        // api.velocity.set(0, 0);
-      } else {
+  const moveLeftRef = useRef(false);
+  const moveRightRef = useRef(false);
+  const boostRef = useRef(false);
+
+  const handleMove = () => {
+    if (moveLeftRef.current) {
+      if (posRef.current[0] > moveRange[0] + size[0] / 2 + 0.02) {
         api.velocity.set(
           boostRef.current
             ? -config.game.pad.velocity * config.game.pad.boostMultiplier
@@ -62,16 +63,11 @@ export const Pad = ({
           0
         );
       }
-
-      if (angleRef.current >= rotationRange[1]) {
-        // api.angularVelocity.set(0);
-      } else {
+      if (angleRef.current < rotationRange[1]) {
         api.angularVelocity.set(config.game.pad.angularVelocity);
       }
-    } else if (e.key === "ArrowRight" || e.key === "d") {
-      if (posRef.current[0] >= moveRange[1] - size[0] / 2) {
-        // api.velocity.set(0, 0);
-      } else {
+    } else if (moveRightRef.current) {
+      if (posRef.current[0] < moveRange[1] - size[0] / 2 - 0.02) {
         api.velocity.set(
           boostRef.current
             ? config.game.pad.velocity * config.game.pad.boostMultiplier
@@ -80,33 +76,39 @@ export const Pad = ({
         );
       }
 
-      if (angleRef.current <= rotationRange[0]) {
-        // api.angularVelocity.set(0);
-      } else {
+      if (angleRef.current > rotationRange[0]) {
         api.angularVelocity.set(-config.game.pad.angularVelocity);
       }
-    }
-
-    if (e.key === " ") {
-      boostRef.current = true;
-      console.log("chuj");
-    }
-  });
-
-  window.addEventListener("keyup", (e) => {
-    if (
-      e.key === "ArrowLeft" ||
-      e.key === "a" ||
-      e.key === "ArrowRight" ||
-      e.key === "d"
-    ) {
+    } else {
       api.velocity.set(0, 0);
       api.angularVelocity.set(0);
     }
+  };
 
-    if (e.key === " ") {
-      boostRef.current = false;
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft" || e.key === "a") {
+      moveLeftRef.current = true;
+    } else if (e.key === "ArrowRight" || e.key === "d") {
+      moveRightRef.current = true;
+    } else if (e.key === " ") {
+      boostRef.current = true;
+    } else {
+      return;
     }
+    handleMove();
+  });
+
+  window.addEventListener("keyup", (e) => {
+    if (e.key === "ArrowLeft" || e.key === "a") {
+      moveLeftRef.current = false;
+    } else if (e.key === "ArrowRight" || e.key === "d") {
+      moveRightRef.current = false;
+    } else if (e.key === " ") {
+      boostRef.current = false;
+    } else {
+      return;
+    }
+    handleMove();
   });
 
   const handleClick = () => {
