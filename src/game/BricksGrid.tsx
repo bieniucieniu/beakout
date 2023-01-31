@@ -4,7 +4,7 @@ import { Brick } from "./Brick";
 export const BricksGrid = ({
   bricksRef,
   material,
-  removeBrick,
+  brickHit,
 }: BricksGridProps) => {
   return (
     <>
@@ -13,7 +13,7 @@ export const BricksGrid = ({
           key={brick.position.join()}
           {...brick}
           material={material}
-          removeBrick={removeBrick}
+          brickHit={brickHit}
         />
       ))}
     </>

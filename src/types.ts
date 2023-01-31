@@ -6,7 +6,7 @@ export type BrickProps = {
   points: number;
   name: string;
   material?: p2.MaterialOptions;
-  removeBrick?: (brick: string) => void;
+  brickHit?: (brick: string, points: number) => void;
 };
 
 export type GameProps = {
@@ -68,5 +68,5 @@ export type PadProps = {
 export type BricksGridProps = {
   bricksRef: React.MutableRefObject<BrickProps[]>;
   material: p2.MaterialOptions;
-  removeBrick: (brick: string) => void;
+  brickHit: (brick: string, points: number) => void;
 };

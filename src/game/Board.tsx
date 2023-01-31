@@ -45,12 +45,14 @@ export const Board = ({
     )
   );
 
-  const brickHit = (brickName: string) => {
+  const brickHit = (brickName: string, points: number) => {
     if (bricksRef.current.length === 1) {
       alert("You win!");
       setIsPaused(true);
     }
-    bricksRef.current = bricksRef.current.filter((b) => b.name !== brickName);
+    if (points <= 0) {
+      bricksRef.current = bricksRef.current.filter((b) => b.name !== brickName);
+    }
     setScore(++scoreRef.current);
   };
 
@@ -76,7 +78,7 @@ export const Board = ({
       <BricksGrid
         bricksRef={bricksRef}
         material={config.game.materials.default}
-        removeBrick={brickHit}
+        brickHit={brickHit}
       />
 
       <Ball

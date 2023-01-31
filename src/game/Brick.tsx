@@ -10,10 +10,9 @@ export const Brick = ({
   name,
   material,
   points,
-  removeBrick,
+  brickHit,
 }: BrickProps) => {
   const pointsTracker = useRef(points);
-  const [colorState, setColorState] = useState(`blue`);
   const [ref, api] = useBox(() => ({
     mass: config.game.brick.mass,
     position: [position[0], position[1]],
@@ -23,13 +22,10 @@ export const Brick = ({
     onCollideBegin: (e) => {
       if (e.body.name === "ball") {
         pointsTracker.current -= 1;
-        setColorState(
-          `0x0${pointsTracker.current}0${pointsTracker.current}0${pointsTracker.current}`
-        );
+        if (brickHit) brickHit(name, pointsTracker.current);
         if (pointsTracker.current === 0) {
           ref.current!.removeFromParent();
           api.collisionResponse.set(false);
-          if (removeBrick) removeBrick(name);
         }
       }
     },
