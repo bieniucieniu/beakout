@@ -9,7 +9,6 @@ export const App = () => {
 
   useTabFocus(
     () => !isPausedbyPlayer && setIsPaused(false),
-
     () => setIsPaused(true)
   );
 
