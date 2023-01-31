@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { Pad } from "./Pad";
 import { BricksGrid } from "./BricksGrid";
 import config from "../config.json";
+import { createGrid } from "./createGrid";
 
 export const Board = ({
   score,
@@ -18,26 +19,10 @@ export const Board = ({
 }: BoardProps) => {
   const scoreRef = useRef(score);
   const bricksRef = useRef<BrickProps[]>(
-    Array.from(
-      { length: config.game.board.grid.width * config.game.board.grid.height },
-      (_, i) => ({
-        position: [
-          (i % config.game.board.grid.width) *
-            (config.game.board.width / config.game.board.grid.width) -
-            config.game.board.width / 2 +
-            config.game.board.width / config.game.board.grid.width / 2,
-          Math.floor(i / config.game.board.grid.width) *
-            (config.game.board.height / config.game.board.grid.height / 2) +
-            config.game.board.height / config.game.board.grid.height / 2 -
-            1,
-          0,
-        ],
-        size: config.game.brick.size as [number, number],
-        depth: config.game.brick.depth,
-        colors: config.game.brick.colors,
-        points: (i % maxPoints) + 1,
-        name: `brick-${i}`,
-      })
+    createGrid(
+      config.game.board.grid.width,
+      config.game.board.grid.height,
+      maxPoints
     )
   );
 
