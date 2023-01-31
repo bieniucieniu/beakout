@@ -12,6 +12,8 @@ export const Board = ({
   setScore,
   isPaused,
   setIsPaused,
+  lifes,
+  setLifes,
 }: BoardProps) => {
   const scoreRef = useRef(score);
   const bricksRef = useRef<BrickProps[]>(
@@ -75,6 +77,8 @@ export const Board = ({
         boardSize={[config.game.board.width, config.game.board.height]}
         margin={3}
         isPaused={isPaused}
+        lifes={lifes}
+        setLifes={setLifes}
       />
 
       <Border

@@ -15,6 +15,8 @@ export type GameProps = {
   setIsPaused: (isPaused: boolean) => void;
   score: number;
   setScore: (score: number) => void;
+  lifes: number;
+  setLifes: (lifes: number) => void;
 };
 
 export type BoardProps = {
@@ -23,6 +25,8 @@ export type BoardProps = {
   isPaused: boolean;
   setScore: (score: number) => void;
   setIsPaused: (isPaused: boolean) => void;
+  lifes: number;
+  setLifes: (lifes: number) => void;
 };
 
 export type BoxProps = {
@@ -38,6 +42,8 @@ export type BallProps = {
   boardSize: [number, number];
   margin: number;
   isPaused: boolean;
+  lifes: number;
+  setLifes: (lifes: number) => void;
 };
 
 export type LightsProps = {

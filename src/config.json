@@ -1,5 +1,7 @@
 {
   "game": {
+    "lifes": 3,
+
     "ball": {
       "mass": 0.1,
       "defaultPosition": [0, 0],

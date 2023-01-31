@@ -13,6 +13,8 @@ export default ({
   setIsPaused,
   score,
   setScore,
+  lifes,
+  setLifes,
 }: GameProps) => {
   return (
     <Canvas className={className} camera={{ position: [0, 0, 24] }}>
@@ -31,6 +33,8 @@ export default ({
           setScore={setScore}
           setIsPaused={setIsPaused}
           isPaused={isPaused}
+          lifes={lifes}
+          setLifes={setLifes}
         />
       </Physics>
       <Lights boardSize={[32, 24]} lightIntensity={0.3} />
