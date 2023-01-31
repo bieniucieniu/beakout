@@ -76,7 +76,7 @@
       },
       "padBall": {
         "friction": 0,
-        "restitution": 1
+        "restitution": 1.15
       },
 
       "ballDefault": {

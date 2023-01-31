@@ -17,6 +17,7 @@ export type GameProps = {
   setScore: (score: number) => void;
   lifes: number;
   setLifes: (lifes: number) => void;
+  maxPoints: number;
 };
 
 export type BoardProps = {
@@ -27,6 +28,7 @@ export type BoardProps = {
   setIsPaused: (isPaused: boolean) => void;
   lifes: number;
   setLifes: (lifes: number) => void;
+  maxPoints: number;
 };
 
 export type BoxProps = {

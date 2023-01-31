@@ -14,6 +14,7 @@ export const Board = ({
   setIsPaused,
   lifes,
   setLifes,
+  maxPoints,
 }: BoardProps) => {
   const scoreRef = useRef(score);
   const bricksRef = useRef<BrickProps[]>(
@@ -34,7 +35,7 @@ export const Board = ({
         size: config.game.brick.size as [number, number],
         depth: config.game.brick.depth,
         colors: config.game.brick.colors,
-        points: (i % (config.game.brick.maxPoinst - 1)) + 1,
+        points: (i % (maxPoints - 1)) + 1,
         name: `brick-${i}`,
       })
     )
