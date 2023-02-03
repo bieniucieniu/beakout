@@ -1,11 +1,7 @@
-import { BrickProps } from "../types";
+import { BrickProps, TCreateGrid } from "../types";
 import config from "../config.json";
 
-export const createGrid = (
-  width: number,
-  height: number,
-  maxPoints: number
-): BrickProps[] => {
+export const createGrid: TCreateGrid = (width, height, maxPoints) => {
   return Array.from({ length: width * height }, (_, i) => ({
     position: [
       (i % width) * (config.game.board.width / width) -

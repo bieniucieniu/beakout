@@ -78,3 +78,9 @@ export type BricksGridProps = {
   material: p2.MaterialOptions;
   brickHit: (brick: string, points: number) => void;
 };
+
+export type TCreateGrid = (
+  width: number,
+  height: number,
+  maxPoints: number
+) => BrickProps[];
