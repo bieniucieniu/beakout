@@ -39,42 +39,60 @@ export const App = () => {
         <div className="grid grid-cols-3">
           <div className="text-center m-auto">Score: {score}</div>
           <div className="text-center m-auto">Lifes: {lifes}</div>
-          <div className="grid grid-cols-2">
-            <div className="text-center m-auto">max points: {maxPoints}</div>
-            <input
-              type="range"
-              min={1}
-              max={12}
-              value={maxPoints}
-              onChange={(e) => {
-                setMaxPoints(parseInt(e.target.value));
-                setIsPlaying(false);
-              }}
-            />
-          </div>
+          <button
+            className="text-center m-auto"
+            onClick={() => setIsPlaying(false)}
+          >
+            restart
+          </button>
         </div>
       </nav>
-      {isPlaying ? (
-        <Game
-          isPaused={isPaused}
-          setIsPaused={setIsPaused}
-          score={score}
-          setScore={setScore}
-          lifes={lifes}
-          setLifes={setLifes}
-          maxPoints={maxPoints}
-        />
-      ) : (
-        <button
-          className="m-auto"
-          onClick={() => {
-            setIsPlaying(true);
-            setIsPaused(false);
-          }}
-        >
-          Start
-        </button>
-      )}
+      <div className="grid grid-cols-3">
+        <div className="col-start-1 col-end-1">s</div>
+        <div className="col-start-2 col-end-2">
+          {isPlaying ? (
+            <Game
+              isPaused={isPaused}
+              setIsPaused={setIsPaused}
+              score={score}
+              setScore={setScore}
+              lifes={lifes}
+              setLifes={setLifes}
+              maxPoints={maxPoints}
+            />
+          ) : (
+            <>
+              <div className="grid grid-cols-2">
+                <form className="" onFocus={() => setIsPaused(true)}>
+                  <label>
+                    <span>max points: </span>
+                    <input type="number" value={maxPoints} />
+                  </label>
+                  <input
+                    type="range"
+                    min={1}
+                    max={12}
+                    value={maxPoints}
+                    onFocus={() => setIsPaused(true)}
+                    onChange={(e) => setMaxPoints(parseInt(e.target.value))}
+                  />
+                  <button type="submit">reStart</button>
+                </form>
+              </div>
+              <button
+                className="m-auto"
+                onClick={() => {
+                  setIsPlaying(true);
+                  setIsPaused(false);
+                }}
+              >
+                Start
+              </button>
+            </>
+          )}
+        </div>
+        <div className="col-start-3 col-end-3">s</div>
+      </div>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { Pad } from "./Pad";
 import { BricksGrid } from "./BricksGrid";
 import config from "../config.json";
-import { createGrid } from "./createGrid";
+import { createBricksGrid } from "./createBricksGrid";
 
 export const Board = ({
   score,
@@ -19,7 +19,7 @@ export const Board = ({
 }: BoardProps) => {
   const scoreRef = useRef(score);
   const bricksRef = useRef<BrickProps[]>(
-    createGrid(
+    createBricksGrid(
       config.game.board.grid.width,
       config.game.board.grid.height,
       maxPoints
