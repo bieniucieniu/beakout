@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 export const useTabFocus = (onFocus: () => void, onBlur: () => void) => {
   useEffect(() => {
