@@ -4,7 +4,7 @@ import { useTabFocus } from "./useTabFocus";
 import config from "./game/config.json";
 import { Navbar } from "./components/Navbar";
 import { Button } from "./components/Button";
-import { Scoreboard } from "./components/Scoreboard";
+import { ScoreBlock } from "./components/ScoreBlock";
 
 export const App = () => {
   const [isPausedbyPlayer, setIsPausedbyPlayer] = useState(false);
@@ -38,8 +38,8 @@ export const App = () => {
           }}
         />
         <div className="grid grid-cols-3">
-          <Scoreboard text="Score" value={score} />
-          <Scoreboard text="Lifes" value={lifes} />
+          <ScoreBlock text="Score" value={score} />
+          <ScoreBlock text="Lifes" value={lifes} />
           <Button
             text={isPlaying ? "restart" : "play"}
             onClick={() => setIsPlaying(!isPlaying)}

@@ -1,4 +1,4 @@
-export const Scoreboard = ({
+export const ScoreBlock = ({
   text,
   value,
   className,
