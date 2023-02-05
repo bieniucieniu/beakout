@@ -1,7 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { useBox, useContactMaterial } from "@react-three/p2";
 import { useEffect, useRef } from "react";
-import config from "../config.json";
+import config from "./config.json";
 
 import type { PadProps } from "../types";
 

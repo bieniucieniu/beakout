@@ -5,7 +5,7 @@ import { Border } from "./Border";
 import { useRef } from "react";
 import { Pad } from "./Pad";
 import { BricksGrid } from "./BricksGrid";
-import config from "../config.json";
+import config from "./config.json";
 import { createBricksGrid } from "./createBricksGrid";
 
 export const Board = ({

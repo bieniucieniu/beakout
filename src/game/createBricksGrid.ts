@@ -1,5 +1,5 @@
 import { BrickProps, TCreateGrid } from "../types";
-import config from "../config.json";
+import config from "./config.json";
 
 export const createBricksGrid: TCreateGrid = (width, height, maxPoints) => {
   return Array.from({ length: width * height }, (_, i) => ({

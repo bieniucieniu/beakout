@@ -2,7 +2,7 @@ import { useFrame } from "@react-three/fiber";
 import { useCircle } from "@react-three/p2";
 import { useEffect, useRef } from "react";
 import { BallProps } from "../types";
-import config from "../config.json";
+import config from "./config.json";
 
 export const Ball = ({
   material,

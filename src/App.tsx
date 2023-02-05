@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Game from "./game";
 import { useTabFocus } from "./useTabFocus";
-import config from "./config.json";
+import config from "./game/config.json";
+import { Navbar } from "./components/Navbar";
 
 export const App = () => {
   const [isPausedbyPlayer, setIsPausedbyPlayer] = useState(false);
@@ -26,7 +27,7 @@ export const App = () => {
 
   return (
     <div className="w-screen h-screen overflow-hidden">
-      <nav className="bg-cyan-300 grid grid-cols-2 h-12">
+      {/* <nav className="bg-cyan-300 grid grid-cols-2 h-12">
         <button
           className="text-center m-auto"
           onClick={() => {
@@ -46,7 +47,11 @@ export const App = () => {
             {isPlaying ? "restart" : "play"}
           </button>
         </div>
-      </nav>
+      </nav> */}
+      <Navbar>
+        <button>shuj</button>
+      </Navbar>
+
       {isPlaying ? (
         <Game
           isPaused={isPaused}

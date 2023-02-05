@@ -1,7 +1,7 @@
 import { useBox } from "@react-three/p2";
 import { useRef, useState } from "react";
 import type { BrickProps } from "../types";
-import config from "../config.json";
+import config from "./config.json";
 
 export const Brick = ({
   position,
