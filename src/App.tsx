@@ -3,6 +3,8 @@ import Game from "./game";
 import { useTabFocus } from "./useTabFocus";
 import config from "./game/config.json";
 import { Navbar } from "./components/Navbar";
+import { Button } from "./components/Button";
+import { Scoreboard } from "./components/Scoreboard";
 
 export const App = () => {
   const [isPausedbyPlayer, setIsPausedbyPlayer] = useState(false);
@@ -27,29 +29,22 @@ export const App = () => {
 
   return (
     <div className="w-screen h-screen overflow-hidden">
-      {/* <nav className="bg-cyan-300 grid grid-cols-2 h-12">
-        <button
-          className="text-center m-auto"
+      <Navbar>
+        <Button
+          text={isPaused ? "Resume" : "Pause"}
           onClick={() => {
             setIsPausedbyPlayer(!isPaused);
             setIsPaused(!isPaused);
           }}
-        >
-          {isPaused ? "Resume" : "Pause"}
-        </button>
+        />
         <div className="grid grid-cols-3">
-          <div className="text-center m-auto">Score: {score}</div>
-          <div className="text-center m-auto">Lifes: {lifes}</div>
-          <button
-            className="text-center m-auto"
+          <Scoreboard text="Score" value={score} />
+          <Scoreboard text="Lifes" value={lifes} />
+          <Button
+            text={isPlaying ? "restart" : "play"}
             onClick={() => setIsPlaying(!isPlaying)}
-          >
-            {isPlaying ? "restart" : "play"}
-          </button>
+          />
         </div>
-      </nav> */}
-      <Navbar>
-        <button>shuj</button>
       </Navbar>
 
       {isPlaying ? (
